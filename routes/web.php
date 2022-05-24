@@ -19,21 +19,14 @@ use App\Http\Controllers\MultiFileUploadAjaxController;
 |
 */
   
-//Route::resource('products', ProductController::class);
-Route::get('users', [UserController::class, 'index'])->name('users.index');
-
+Route::get('/', function () {
+    return view('welcome');
+});
 Route::get('products', [ProductController::class, 'index']);
 Route::post('product_store', [ProductController::class, 'store']);
 Route::post('product_edit', [ProductController::class, 'edit']);
 Route::post('product_delete', [ProductController::class, 'destroy']);
-Route::post('image_delete', [ProductController::class, 'image_delete']);
+Route::get('image_delete/{id}', [ProductController::class, 'image_delete']);
+Route::get('image_delete1', [ProductController::class, 'image_delete']);
 
-//ajax crud 
-Route::get('ajax-crud-datatable', [DataTableAjaxCRUDController::class, 'index']);
-Route::post('store-company', [DataTableAjaxCRUDController::class, 'store']);
-Route::post('edit-company', [DataTableAjaxCRUDController::class, 'edit']);
-Route::post('delete-company', [DataTableAjaxCRUDController::class, 'destroy']);
 
-//file uploaf
-Route::get('multi-file-ajax-upload', [MultiFileUploadAjaxController::class, 'index']); 
-Route::post('store-multi-file-ajax', [MultiFileUploadAjaxController::class, 'storeMultiFile']);
